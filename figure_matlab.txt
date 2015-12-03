@@ -1,0 +1,28 @@
+>> J=I(:,:,1)>160;
+>> figure(2), imshow(J);
+>> K=bwmorph(J,'skel','inf');
+>> figure(3), imshow(K);
+>> figure(4),imshow(~J);
+>> P=bwmorph(~J,'skel','inf');
+>> figure(5), imshow(P);
+>> fun=
+ fun=
+     |
+Error: Expression or statement is incomplete or incorrect.
+ 
+>> fun=@minutie;
+>> L=nlfilter(P,[3,3], fun);
+>> figure(6),imshow(L);
+>> LTerm = (L==1);
+>> figure(7), imshow(LTerm);
+>> LTermLab=bwlable(LTerm);
+Undefined function or variable 'bwlable'.
+ 
+Did you mean:
+>> LTermLab=bwlabel(LTerm);
+>> propTerm=regionprops(LTermLab,'Centroid');
+>> CentroidTerm=round(cat(1,propTerm(:).Centroid));
+>> figure(8), imshow(~P);
+>> hold on
+>> plot(CentroidTerm(:,1),CentroidTerm(:,2),'ro');
+>> 
